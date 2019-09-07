@@ -12,6 +12,12 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+  ></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -54,15 +60,24 @@
 
       <div class="row">
         <div class="col">
-          <img src="assets/images/RGS_Hotlist_0617_Calendar.png" class="img-fluid" alt="calendar" />
+          <img
+            src="assets/images/RGS_Hotlist_0617_Calendar.png"
+            class="img-fluid"
+            alt="calendar"
+          />
         </div>
-        <div class="col" id="timer">
+        <div class="col" >
           <h3>TIME LEFT UNTIL THE WEBINAR STARTS...</h3>
+          <p id="timer"> </p>
         </div>
       </div>
       <div class="row">
         <div class="col-6">
-          <img src="assets/images/RGS_Hotlist_0617_JimRickards.png" class="img-fluid" alt="Jim Rickards"/>
+          <img
+            src="assets/images/RGS_Hotlist_0617_JimRickards.png"
+            class="img-fluid"
+            alt="Jim Rickards"
+          />
           <p>
             Presented by best-selling author and gold expert…
           </p>
@@ -77,9 +92,7 @@
                 alt="checkmark "
                 width="30px"
                 height="30px"
-                class="img-fluid" 
-
-
+                class="img-fluid"
               />
               <p>
                 How a class of “off-limit” gold stocks could become fair game
@@ -92,8 +105,7 @@
                 alt="checkmark "
                 width="30px"
                 height="30px"
-                class="img-fluid" 
-
+                class="img-fluid"
               />
               <p>
                 Why just as many gold stocks could be CRUSHED. But this isn’t a
@@ -107,8 +119,7 @@
                 alt="checkmark "
                 width="30px"
                 height="30px"
-                class="img-fluid" 
-
+                class="img-fluid"
               />
               <p>
                 How it could compound an announcement from the Federal Reserve
@@ -122,7 +133,6 @@
                 width="30px"
                 height="30px"
                 class="img-fluid"
-                 
               />
               <p>
                 Why you’ll hear predictions of doom for the gold market (it’s
@@ -136,8 +146,7 @@
                 alt="checkmark "
                 width="30px"
                 height="30px"
-                class="img-fluid" 
-
+                class="img-fluid"
               />
               <p>
                 Why we may see confirmation that gold will make a run at $2,000
@@ -153,8 +162,7 @@
           alt="exclamation mark"
           width="50px"
           height="50px"
-          class="img-fluid" 
-
+          class="img-fluid"
         />
         WARNING: SPACE IS LIMITED & THESE LIVE TRAININGS ALWAYS FILL UP
       </div>
@@ -173,52 +181,90 @@
         YES! Reserve My Spot Now!
       </button>
     </div>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     <script type="text/javascript">
 
+// Using Moment.js
+
+var present=  new moment();
+var webDate = new moment.duration(432000, "seconds" );
+var duration = present.diff(webDate, "seconds");
+
+console.log(duration);
 
 
-    // A hacky interval
-let intervalId;
-let number = 432000 * 1000
+
+// var timer = ()=>{
+//     $("#timer").html("<h2>" + duration + "</h2>");
 
 
-    function run() {
+// }
+// timer();
+
+// // A hacky interval/Timer
+      var number =(432000);
+      var intervalId;
+      
+//     //   bug catcher for multiple re-renders
+      function run() {
       clearInterval(intervalId);
-      intervalId = setInterval(decrement, 1000);
-      console.log(number)
+      intervalId = setInterval(countdown, 1000);
     }
 
-    //  The decrement function.
-    function decrement() {
 
+// //  The stop function
+function stop() {
+clearInterval(intervalId);
+}
+
+
+
+
+
+
+
+
+
+
+
+//     //  The countdown function.
+    function countdown() {
+
+
+        // parseInt(duration)
       //  Decrease number by one.
-      number--;
-      $("#timer").append("<h2>number</h2>");
+      duration--;
+
+      //  Show the number in the #show-number tag.
+      $("#timer").html("<h2>" + duration + "</h2>");
+
+
+      //  Once number hits zero...
+      if (number === 0) {
+
+        //  ...run the stop function.
+        stop();
+
+        //  Alert the user that time is up.
+        alert("Time Up!");
+      }
     }
+    run();
 
-//       $(document).ready(function() {
-//         var intervalId;
-//         setInterval(fiveDays, 1000 * 432000);
+      //       $(document).ready(function() {
+      //         var intervalId;
+      //         setInterval(fiveDays, 1000 * 432000);
 
-    
-// // Time calculations for days, hours, minutes and seconds
-// var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-// });
+      // // Time calculations for days, hours, minutes and seconds
+      // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      //   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      //   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      //   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // });
 
-
-
-
-        // if else statement to check make both boxes appear with the same values
+      // if else statement to check make both boxes appear with the same values
       $(".custom-control-input").on("click", function() {
-
         if ($("#customCheck1") === true) {
           $("#customCheck2") === true;
         } else if ($("#customCheck2") === false) {
@@ -226,19 +272,13 @@ let number = 432000 * 1000
         }
       });
 
-// Form validation
-    //   check validation for checkboxes
+      // Form validation
+      //   check validation for checkboxes
 
+      // if checkboxes are not checked then...create an alert
 
-    // if checkboxes are not checked then...create an alert
-
-
-    // if checkboxes are checked then...go to endpoint
-    // https://bl45immth4.execute-api.us-east-1.amazonaws.com/production/
-
-
-
-
+      // if checkboxes are checked then...go to endpoint
+      // https://bl45immth4.execute-api.us-east-1.amazonaws.com/production/
     </script>
   </body>
 </html>
