@@ -185,22 +185,23 @@
 
     <script type="text/javascript">
 
-// Using Moment.js
 
+
+// Using Moment.js logig and countdown
+
+// set a time stamp for the first time
 var present=  new moment();
+
+// titme stamp the second time
 var webDate = new moment.duration(432000, "seconds" );
+
+// subtract the difference
 var duration = present.diff(webDate, "seconds");
+
+// create a setInverval function do decrease the amount of the difference
 
 console.log(duration);
 
-
-
-// var timer = ()=>{
-//     $("#timer").html("<h2>" + duration + "</h2>");
-
-
-// }
-// timer();
 
 // // A hacky interval/Timer
       var number =(432000);
@@ -234,14 +235,14 @@ clearInterval(intervalId);
 
         // parseInt(duration)
       //  Decrease number by one.
-      duration--;
-
+      number--;
+      
       //  Show the number in the #show-number tag.
-      $("#timer").html("<h2>" + duration + "</h2>");
+      $("#timer").html("<h2>" + number + "</h2>");
 
 
       //  Once number hits zero...
-      if (number === 0) {
+      if (number <= 0) {
 
         //  ...run the stop function.
         stop();
